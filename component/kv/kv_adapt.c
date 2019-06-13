@@ -141,6 +141,8 @@ int32_t kv_flash_write(uint32_t offset, void *buf, uint32_t nbytes)
         DCACHE_InvalidateByRange(FlexSPI_AMBA_BASE + phy_address, FLASH_PAGE_SIZE_BYTES);
     }
     
+    EnableGlobalIRQ(old_primask);
+    
     return 0;
 }
 
